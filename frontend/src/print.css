@@ -1,0 +1,41 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  /* Hide everything except the invoice */
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  #invoice-print-area {
+    box-shadow: none;
+    border: none;
+    max-width: 100%;
+    padding: 0;
+    page-break-inside: avoid;
+  }
+
+  /* Repeat table header on each page */
+  thead {
+    display: table-header-group;
+  }
+
+  /* Force colour rendering so totals and borders survive */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* No URL suffixes on links */
+  a[href]::after {
+    content: "";
+  }
+}
